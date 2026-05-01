@@ -1,4 +1,4 @@
-import { Ship } from "../src/Ship";
+import { Ship } from "../src/Class/Ship";
 
 describe("ship class tests", () => {
   const battleShip = new Ship(2);
