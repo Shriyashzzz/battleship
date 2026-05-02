@@ -17,13 +17,11 @@ export class GameBoard {
       for (let i = x; i < x + shipLength; i++) {
         this.battleSpace[i][y] = ship;
         this.shipBinaryRecords[i][y] = 1;
-        console.log(i, y);
       }
     } else if (orientation == "y") {
       for (let i = y; i < y + shipLength; i++) {
         this.battleSpace[x][i] = ship;
         this.shipBinaryRecords[x][i] = 1;
-        console.log(x, i);
       }
     }
   }

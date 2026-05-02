@@ -46,6 +46,73 @@ const initalizeBtnListeners = (playerObj) => {
 
   const squares = document.querySelectorAll(".square");
   squares.forEach((square) => {
+    let squareId = JSON.parse(square.id);
+    square.addEventListener("mouseenter", () => {
+      if (currentShip && !checkIfCollide(squareId, currentShip, playerObj)) {
+        if (currentShip.getShipOrientation() == "x") {
+          for (
+            let x = squareId[0];
+            x < squareId[0] + currentShip.getLength();
+            x++
+          ) {
+            let targetId = `[${x},${squareId[1]}]`;
+            let pointerSquare = document.getElementById(targetId);
+            if (pointerSquare != null) {
+              pointerSquare.classList.add("hoverEnter");
+            }
+          }
+        } else if (currentShip.getShipOrientation() == "y") {
+          for (
+            let y = squareId[1];
+            y < squareId[1] + currentShip.getLength();
+            y++
+          ) {
+            let targetId = `[${squareId[0]},${y}]`;
+            let pointerSquare = document.getElementById(targetId);
+            if (pointerSquare != null) {
+              pointerSquare.classList.add("hoverEnter");
+            }
+          }
+        }
+      }
+    });
+  });
+  squares.forEach((square) => {
+    let squareId = JSON.parse(square.id);
+    square.addEventListener("mouseleave", () => {
+      if (currentShip && !checkIfCollide(squareId, currentShip, playerObj)) {
+        if (currentShip.getShipOrientation() == "x") {
+          for (
+            let x = squareId[0];
+            x < squareId[0] + currentShip.getLength();
+            x++
+          ) {
+            let targetId = `[${x},${squareId[1]}]`;
+
+            let pointerSquare = document.getElementById(targetId);
+            if (pointerSquare != null) {
+              pointerSquare.classList.remove("hoverEnter");
+            }
+          }
+        } else if (currentShip.getShipOrientation() == "y") {
+          for (
+            let y = squareId[1];
+            y < squareId[1] + currentShip.getLength();
+            y++
+          ) {
+            let targetId = `[${squareId[0]},${y}]`;
+
+            let pointerSquare = document.getElementById(targetId);
+            if (pointerSquare != null) {
+              pointerSquare.classList.remove("hoverEnter");
+            }
+          }
+        }
+      }
+    });
+  });
+
+  squares.forEach((square) => {
     square.addEventListener("click", () => {
       if (currentShip) {
         let squareId = JSON.parse(square.id);
@@ -82,14 +149,19 @@ const placeShip = (squareId, currentShip) => {
       let targetId = `[${x},${squareId[1]}]`;
       console.log(targetId);
       let currentSquare = document.getElementById(targetId);
-      currentSquare.style.backgroundColor = "red";
+      if (currentSquare != null) {
+        currentSquare.style.backgroundColor = "red";
+        console.log(targetId);
+      }
     }
   } else if (currentShip.getShipOrientation() == "y") {
     for (let y = squareId[1]; y < squareId[1] + currentShip.getLength(); y++) {
       let targetId = `[${squareId[0]},${y}]`;
       let currentSquare = document.getElementById(targetId);
-      currentSquare.style.backgroundColor = "red";
-      console.log(targetId);
+      if (currentSquare != null) {
+        currentSquare.style.backgroundColor = "red";
+        console.log(targetId);
+      }
     }
   }
 };
@@ -98,14 +170,20 @@ function checkIfCollide(squareId, ship, playerObj) {
   let collision = false;
   if (ship.getShipOrientation() == "x") {
     for (let x = squareId[0]; x < squareId[0] + ship.getLength(); x++) {
-      if (playerObj.playerGameBoard.getShip(x, squareId[1]) != null) {
+      if (
+        (!(x < 10) && !(x < 0)) ||
+        playerObj.playerGameBoard.getShip(x, squareId[1]) != null
+      ) {
         collision = true;
         return collision;
       }
     }
   } else {
     for (let y = squareId[1]; y < squareId[1] + ship.getLength(); y++) {
-      if (playerObj.playerGameBoard.getShip(squareId[0], y) != null) {
+      if (
+        (!(y < 10) && !(y < 0)) ||
+        playerObj.playerGameBoard.getShip(squareId[0], y) != null
+      ) {
         collision = true;
         return collision;
       }

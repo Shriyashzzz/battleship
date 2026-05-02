@@ -267,9 +267,6 @@ main {
     width: 42px;
   }
 
-  .square:hover {
-    background-color: #edecec;
-  }
   .square:active {
     background-color: aquamarine;
   }
@@ -277,8 +274,7 @@ main {
 
 .shipBtn {
   cursor: pointer;
-  border: 4px solid black;
-  background-color: gray;
+
   padding-bottom: 10px;
   transition: 0.1s ease-in-out;
   user-select: none;
@@ -291,6 +287,9 @@ main {
   border: 4px solid #857676;
   padding: 3px 8px;
 }
+.shipBtn:focus {
+  border: 4px solid #da9090;
+}
 
 .shipBtn span {
   font-size: 1.2em;
@@ -301,4 +300,8 @@ main {
   padding: 0;
   margin-bottom: 10px;
   transform: translateY(10px);
+}
+
+.hoverEnter {
+  background-color: yellow;
 }
