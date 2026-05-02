@@ -1,0 +1,222 @@
+:root {
+  --defaultBackgorund: #aac1cd87;
+}
+
+@font-face {
+  font-family: "Nosifer";
+  src:
+    url("./fonts/Nosifer-Regular.woff2") format("woff2"),
+    url("./fonts/Nosifer-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src:
+    url("./fonts/Orbitron-Regular.woff2") format("woff2"),
+    url("./fonts/Orbitron-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100dvh;
+  font-size: large;
+  background-color: var(--defaultBackgorund);
+  font-family: "Nosifer", "Orbitron", sans-serif;
+}
+
+.footer {
+  display: flex;
+  color: white;
+  justify-content: center;
+  text-align: center;
+  text-wrap-style: pretty;
+  align-items: center;
+  flex-direction: row;
+  background-color: grey;
+  width: 100vw;
+  margin: 0px;
+  text-decoration: wavy;
+  font-family: monospace;
+  font-size: 1rem;
+  margin-top: auto;
+
+  .footer-link {
+    text-decoration: none;
+    align-items: center;
+    color: white;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    display: flex;
+    transition: 0.2s all ease-in-out;
+    gap: 0.3rem;
+
+    .icons.github {
+      transition: 0.2s all ease-out;
+      filter: invert(99%) sepia(1%) saturate(2975%) hue-rotate(190deg)
+        brightness(94%) contrast(108%);
+      height: 2rem;
+      width: 2rem;
+    }
+
+    .icons.github:hover {
+      transform: rotate(360deg);
+    }
+  }
+
+  .footer-link:hover {
+    transform: scale(1.3);
+  }
+}
+
+main {
+  height: 100dvh;
+}
+
+.homePageMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 4rem;
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  .homePageContent {
+    display: flex;
+    flex: 1;
+    gap: 3rem;
+    flex-direction: column;
+
+    p {
+      color: rgb(88, 98, 88);
+      align-self: center;
+      font-size: 4rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+      align-self: center;
+      width: fit-content;
+      #userName {
+        width: 100%;
+        padding: 12px 16px;
+        margin: 8px 0;
+        display: inline-block;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-family: "Orbitron", sans-serif;
+        font-size: 16px;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+        outline: none;
+        background-color: #edecec;
+      }
+      #userName:focus {
+        border-color: #4a90e2;
+        box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
+      }
+
+      /* Style the placeholder text */
+      #userName::placeholder {
+        font-style: italic;
+        font-family: "Nosifer";
+        text-align: center;
+        color: green;
+        opacity: 0.4;
+      }
+      #userName:focus {
+        outline: none;
+      }
+
+      #userName:invalid {
+        outline: red;
+      }
+      input[type="text"] {
+        padding-left: 1rem;
+        color: green;
+      }
+
+      .startBtn {
+        font-family: "Nosifer";
+        font-size: 1rem;
+        background: none;
+        border: none;
+        align-self: center;
+        border-radius: 1rem;
+        padding: 6px;
+        justify-self: center;
+      }
+      .startBtn:hover {
+        background-color: #d7d7d7;
+      }
+      .startBtn:active {
+        background-color: rgb(200, 200, 200);
+        color: rgb(235, 123, 123);
+      }
+    }
+  }
+}
+.gameInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  .whatPara {
+    font-family: "Nosifer", monospace, sans-serif;
+    color: rgb(235, 112, 235);
+  }
+  .gameInfoLink {
+    font-family: "Orbitron", monospace, sans-serif;
+
+    color: #4a90e2;
+  }
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.is-invalid {
+  border: 2px solid red;
+}
+
+@media screen and (max-width: 768px) {
+  .homePageMain {
+    .homePageContent {
+      p {
+        font-size: 2rem;
+      }
+    }
+
+    .gameInfo {
+      display: flex;
+      font-size: 0.9rem;
+      align-items: center;
+      justify-content: center;
+
+      .whatPara {
+        font-family: "Nosifer", monospace, sans-serif;
+        color: rgb(235, 112, 235);
+      }
+      .gameInfoLink {
+        font-family: "Orbitron", monospace, sans-serif;
+
+        color: #4a90e2;
+      }
+    }
+  }
+}

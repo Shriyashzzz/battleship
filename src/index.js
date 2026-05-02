@@ -1,3 +1,2 @@
-export function add(a, b) {
-  return a + b;
-}
+import "./style.css";
+import "./homepage.js";
