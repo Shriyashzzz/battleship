@@ -12,8 +12,8 @@ export const initializeGamePageDom = (playerName) => {
 export function makeGameBoardDOM(gamePageContent) {
   const shipPlaceBoard = document.createElement("div");
   shipPlaceBoard.classList.add("shipPlaceBoard");
-  for (let row = 0; row < 10; row++) {
-    for (let col = 0; col < 10; col++) {
+  for (let col = 0; col < 10; col++) {
+    for (let row = 0; row < 10; row++) {
       const square = document.createElement("div");
       square.id = `[${row},${col}]`;
       square.classList.add("square");

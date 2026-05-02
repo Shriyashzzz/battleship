@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { Ship } from "./Class/Ship.js";
 const initalizeBtnListeners = (playerObj) => {
   const gameBtnContainer = document.querySelector(".gameBtnContainer");
@@ -39,21 +40,60 @@ const initalizeBtnListeners = (playerObj) => {
   squares.forEach((square) => {
     square.addEventListener("click", () => {
       if (currentShip) {
-        console.log(currentShip);
         let squareId = JSON.parse(square.id);
+        if (!checkIfCollide(squareId, currentShip, playerObj)) {
+          playerObj.playerGameBoard.placeShip(
+            squareId[0],
+            squareId[1],
+            currentShip,
+          );
 
-        playerObj.playerGameBoard.placeShip(
-          squareId[0],
-          squareId[1],
-          currentShip,
-        );
+          placeShip(squareId, currentShip);
+          currentShip = undefined;
+        }
       }
     });
   });
 };
 
-const placeShip = (squareId) => {};
+const placeShip = (squareId, currentShip) => {
+  if (currentShip.getShipOrientation() == "x") {
+    for (let x = squareId[0]; x < squareId[0] + currentShip.getLength(); x++) {
+      let targetId = `[${x},${squareId[1]}]`;
+      console.log(targetId);
+      let currentSquare = document.getElementById(targetId);
+      currentSquare.style.backgroundColor = "red";
+    }
+  } else if (currentShip.getShipOrientation() == "y") {
+    for (let y = squareId[1]; y < squareId[1] + currentShip.getLength(); y++) {
+      let targetId = `[${squareId[0]},${y}]`;
+      let currentSquare = document.getElementById(targetId);
+      currentSquare.style.backgroundColor = "red";
+      console.log(targetId);
+    }
+  }
+};
 
 export function getPlayerShips(playerObj) {
   initalizeBtnListeners(playerObj);
+}
+
+function checkIfCollide(squareId, ship, playerObj) {
+  let collision = false;
+  if (ship.getShipOrientation() == "x") {
+    for (let x = squareId[0]; x < squareId[0] + ship.getLength(); x++) {
+      if (playerObj.playerGameBoard.getShip(x, squareId[1]) != null) {
+        collision = true;
+        return collision;
+      }
+    }
+  } else {
+    for (let y = squareId[1]; y < squareId[1] + ship.getLength(); y++) {
+      if (playerObj.playerGameBoard.getShip(squareId[0], y) != null) {
+        collision = true;
+        return collision;
+      }
+    }
+  }
+  return collision;
 }
