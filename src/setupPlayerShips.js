@@ -22,20 +22,28 @@ const initalizeBtnListeners = (playerObj) => {
     }
   });
 
+  let shipAddedCount = 0;
+  let currentButton;
   gameBtnContainer.addEventListener("click", (e) => {
     const hitButton = e.target.classList;
     if (hitButton.contains("carrierBtn")) {
       currentShip = new Ship(5, toggleAxisBtn.id);
+      currentButton = e.target;
     } else if (hitButton.contains("battleShipBtn")) {
       currentShip = new Ship(4, toggleAxisBtn.id);
+      currentButton = e.target;
     } else if (hitButton.contains("submarineBtn")) {
       currentShip = new Ship(3, toggleAxisBtn.id);
+      currentButton = e.target;
     } else if (hitButton.contains("destroyerBtn")) {
       currentShip = new Ship(2, toggleAxisBtn.id);
+      currentButton = e.target;
     } else if (hitButton.contains("cruiserBtn")) {
       currentShip = new Ship(3, toggleAxisBtn.id);
+      currentButton = e.target;
     }
   });
+
   const squares = document.querySelectorAll(".square");
   squares.forEach((square) => {
     square.addEventListener("click", () => {
@@ -48,8 +56,20 @@ const initalizeBtnListeners = (playerObj) => {
             currentShip,
           );
 
+          currentButton.disabled = true;
+          currentButton.opacity = 0.2;
+          currentButton.style.border = "none";
+
           placeShip(squareId, currentShip);
           currentShip = undefined;
+
+          shipAddedCount += 1;
+          console.log(shipAddedCount);
+          if (shipAddedCount >= 5) {
+            toggleAxisBtn.disabled = true;
+            toggleAxisBtn.opacity = 0.2;
+            toggleAxisBtn.style.border = "none";
+          }
         }
       }
     });
@@ -74,10 +94,6 @@ const placeShip = (squareId, currentShip) => {
   }
 };
 
-export function getPlayerShips(playerObj) {
-  initalizeBtnListeners(playerObj);
-}
-
 function checkIfCollide(squareId, ship, playerObj) {
   let collision = false;
   if (ship.getShipOrientation() == "x") {
@@ -96,4 +112,13 @@ function checkIfCollide(squareId, ship, playerObj) {
     }
   }
   return collision;
+}
+
+function hoverOver(currentShip, ship) {
+  if (currentShip) {
+  }
+}
+
+export function getPlayerShips(playerObj) {
+  initalizeBtnListeners(playerObj);
 }
