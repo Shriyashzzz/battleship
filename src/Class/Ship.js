@@ -1,8 +1,9 @@
 export class Ship {
-  constructor(givenLength) {
+  constructor(givenLength, shipOrientation) {
     this.shipLength = givenLength;
     this.sunkStatus = false;
     this.hitCount = 0;
+    this.shipOrientation = shipOrientation;
   }
 
   hit() {
@@ -25,5 +26,12 @@ export class Ship {
 
   getLength() {
     return this.shipLength;
+  }
+
+  getShipOrientation() {
+    return this.shipOrientation;
+  }
+  setShipOrientation(givenOrientation) {
+    this.shipOrientation = givenOrientation;
   }
 }

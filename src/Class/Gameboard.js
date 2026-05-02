@@ -10,17 +10,18 @@ export class GameBoard {
     );
   }
 
-  placeShip(x, y, ship, orientation = "x") {
+  placeShip(x, y, ship) {
     let shipLength = ship.getLength();
+    let orientation = ship.getShipOrientation();
     if (orientation == "x") {
-      for (let i = x; i < shipLength; i++) {
+      for (let i = x; i < x + shipLength; i++) {
         this.battleSpace[i][y] = ship;
         this.shipBinaryRecords[i][y] = 1;
       }
     } else if (orientation == "y") {
-      for (i = y; i < shipLength; i++) {
+      for (i = y; i < y + shipLength; i++) {
         this.battleSpace[x][i] = ship;
-        this.shipBinaryRecords[i][y] = 1;
+        this.shipBinaryRecords[x][i] = 1;
       }
     }
   }

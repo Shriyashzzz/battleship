@@ -7,7 +7,8 @@ describe("adds ship horizontally into the gameboard matrix , relative to the shi
   beforeAll(() => {
     testGameboard = new GameBoard();
     testShip = new Ship(3);
-    testGameboard.placeShip(0, 5, testShip, "x");
+    testShip.setShipOrientation("x");
+    testGameboard.placeShip(0, 5, testShip);
   });
 
   it("should place Ship at a specific cordinate (0, 5)", () => {
@@ -36,7 +37,8 @@ describe(`should attack hit a ship and then sends the ‘hit’ function to the 
   beforeAll(() => {
     testGameboard = new GameBoard();
     testShip = new Ship(3);
-    testGameboard.placeShip(0, 5, testShip, "x");
+    testShip.setShipOrientation("x");
+    testGameboard.placeShip(0, 5, testShip);
   });
 
   it(`should hit the ship at the cordinate , 0,5`, () => {
@@ -49,7 +51,8 @@ describe(`should attack hit a ship and then sends the ‘hit’ function to the 
 it(`checks if all the ships have sunk on the gameBoard`, () => {
   let testGameboard = new GameBoard();
   let testShip = new Ship(3);
-  testGameboard.placeShip(0, 5, testShip, "x");
+  testShip.setShipOrientation("x");
+  testGameboard.placeShip(0, 5, testShip);
 
   testGameboard.receiveAttack(0, 5);
   testGameboard.receiveAttack(1, 5);
