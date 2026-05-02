@@ -1,4 +1,4 @@
-import { Player } from "./Class/Player.js";
+import { Player } from "../Class/Player.js";
 import { getPlayerShips } from "./setupPlayerShips.js";
 
 export const initializeGamePageDom = (playerName) => {

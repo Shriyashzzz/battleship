@@ -1,14 +1,21 @@
 import _ from "lodash";
-import { Ship } from "./Class/Ship.js";
+import { Ship } from "../Class/Ship.js";
+import { createBattlePage } from "../versusPageDom/battlePage.js";
 const initalizeBtnListeners = (playerObj) => {
   const gameBtnContainer = document.querySelector(".gameBtnContainer");
   const toggleAxisBtn = document.querySelector(".toggleAxis");
   let currentShip;
+  let shipAddedCount = 0;
+  let currentButton;
   const submitBtn = document.querySelector(".shipSubmit");
 
   submitBtn.addEventListener("click", () => {
-    // if all ship added to the graph then ok, if not added not ok
+    if (shipAddedCount == 5) {
+      console.log(playerObj);
+      createBattlePage(playerObj);
+    }
   });
+
   toggleAxisBtn.addEventListener("click", () => {
     if (toggleAxisBtn.id == "x") {
       toggleAxisBtn.id = "y";
@@ -22,8 +29,6 @@ const initalizeBtnListeners = (playerObj) => {
     }
   });
 
-  let shipAddedCount = 0;
-  let currentButton;
   gameBtnContainer.addEventListener("click", (e) => {
     const hitButton = e.target.classList;
     if (hitButton.contains("carrierBtn")) {
@@ -45,8 +50,10 @@ const initalizeBtnListeners = (playerObj) => {
   });
 
   const squares = document.querySelectorAll(".square");
+
   squares.forEach((square) => {
     let squareId = JSON.parse(square.id);
+
     square.addEventListener("mouseenter", () => {
       if (currentShip && !checkIfCollide(squareId, currentShip, playerObj)) {
         if (currentShip.getShipOrientation() == "x") {
@@ -76,9 +83,7 @@ const initalizeBtnListeners = (playerObj) => {
         }
       }
     });
-  });
-  squares.forEach((square) => {
-    let squareId = JSON.parse(square.id);
+
     square.addEventListener("mouseleave", () => {
       if (currentShip && !checkIfCollide(squareId, currentShip, playerObj)) {
         if (currentShip.getShipOrientation() == "x") {
@@ -88,7 +93,6 @@ const initalizeBtnListeners = (playerObj) => {
             x++
           ) {
             let targetId = `[${x},${squareId[1]}]`;
-
             let pointerSquare = document.getElementById(targetId);
             if (pointerSquare != null) {
               pointerSquare.classList.remove("hoverEnter");
@@ -101,7 +105,6 @@ const initalizeBtnListeners = (playerObj) => {
             y++
           ) {
             let targetId = `[${squareId[0]},${y}]`;
-
             let pointerSquare = document.getElementById(targetId);
             if (pointerSquare != null) {
               pointerSquare.classList.remove("hoverEnter");
@@ -110,12 +113,9 @@ const initalizeBtnListeners = (playerObj) => {
         }
       }
     });
-  });
 
-  squares.forEach((square) => {
     square.addEventListener("click", () => {
       if (currentShip) {
-        let squareId = JSON.parse(square.id);
         if (!checkIfCollide(squareId, currentShip, playerObj)) {
           playerObj.playerGameBoard.placeShip(
             squareId[0],
@@ -124,17 +124,16 @@ const initalizeBtnListeners = (playerObj) => {
           );
 
           currentButton.disabled = true;
-          currentButton.opacity = 0.2;
+          currentButton.style.opacity = "0.2"; // Fixed style syntax
           currentButton.style.border = "none";
 
           placeShip(squareId, currentShip);
           currentShip = undefined;
 
           shipAddedCount += 1;
-          console.log(shipAddedCount);
           if (shipAddedCount >= 5) {
             toggleAxisBtn.disabled = true;
-            toggleAxisBtn.opacity = 0.2;
+            toggleAxisBtn.style.opacity = "0.2"; // Fixed style syntax
             toggleAxisBtn.style.border = "none";
           }
         }
@@ -147,11 +146,9 @@ const placeShip = (squareId, currentShip) => {
   if (currentShip.getShipOrientation() == "x") {
     for (let x = squareId[0]; x < squareId[0] + currentShip.getLength(); x++) {
       let targetId = `[${x},${squareId[1]}]`;
-      console.log(targetId);
       let currentSquare = document.getElementById(targetId);
       if (currentSquare != null) {
         currentSquare.style.backgroundColor = "red";
-        console.log(targetId);
       }
     }
   } else if (currentShip.getShipOrientation() == "y") {
@@ -160,7 +157,6 @@ const placeShip = (squareId, currentShip) => {
       let currentSquare = document.getElementById(targetId);
       if (currentSquare != null) {
         currentSquare.style.backgroundColor = "red";
-        console.log(targetId);
       }
     }
   }
@@ -190,11 +186,6 @@ function checkIfCollide(squareId, ship, playerObj) {
     }
   }
   return collision;
-}
-
-function hoverOver(currentShip, ship) {
-  if (currentShip) {
-  }
 }
 
 export function getPlayerShips(playerObj) {

@@ -1,4 +1,4 @@
-import { initializeGamePageDom } from "./initializeGamePage.js";
+import { initializeGamePageDom } from "../shipPlaceDom/initializeGamePage.js";
 
 export const startBtnEventListener = () => {
   const startBtn = document.querySelector(".startBtn");
@@ -10,9 +10,9 @@ export const startBtnEventListener = () => {
       const playerName = userNameInput.value;
       const homePageContent = document.querySelector(".homePageContent");
       homePageContent.innerHTML = "";
-      const homePageMain = document.querySelector("main");
-      homePageMain.classList.add("gameSelectMain");
-      homePageMain.classList.remove("homePageMain");
+      const homepageMain = document
+        .querySelector(".homePageMain")
+        .classList.remove("homePageMain");
       homePageContent.classList.add("gameSelectContent");
       homePageContent.classList.remove("homePageContent");
       initializeGamePageDom(playerName);

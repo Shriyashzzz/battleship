@@ -76,8 +76,10 @@ body {
 
 main {
   height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
-
+/* homepage style */
 .homePageMain {
   display: flex;
   flex-direction: column;
@@ -220,36 +222,35 @@ main {
     }
   }
 }
+/* game select page style */
 
-.gameSelectMain {
+.gameSelectContent {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  gap: 1rem;
+  justify-content: center;
   height: 100dvh;
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
 
-  .gameSelectContent {
+  .gameBtnContainer {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    height: 100%;
-    gap: 1rem;
     justify-content: center;
+    gap: 1rem;
 
-    .gameBtnContainer {
+    .shipBtnContainer {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-
-      .shipBtnContainer {
-        display: flex;
-        gap: 2rem;
-      }
-      .submitWrapper {
-        display: flex;
-        gap: 2rem;
-      }
+      gap: 2rem;
+    }
+    .submitWrapper {
+      display: flex;
+      gap: 2rem;
     }
   }
 }
@@ -304,4 +305,11 @@ main {
 
 .hoverEnter {
   background-color: yellow;
+}
+/* battle page style */
+.battlePageContent {
+  height: 100%;
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
 }
