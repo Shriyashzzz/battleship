@@ -11,7 +11,6 @@ const initalizeBtnListeners = (playerObj) => {
 
   submitBtn.addEventListener("click", () => {
     if (shipAddedCount == 5) {
-      console.log(playerObj);
       createBattlePage(playerObj);
     }
   });

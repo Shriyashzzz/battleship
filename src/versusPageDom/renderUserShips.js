@@ -2,6 +2,8 @@ import { forEach } from "lodash";
 import { computerPlayer } from "../computerObject.js";
 import { computerHits } from "./computerHits.js";
 import { showEndGame } from "./endGame.js";
+import { audioChoice } from "../index.js";
+import { audio } from "../audio/audioObject.js";
 export function startGame(playerObj) {
   const shipRecord = playerObj.playerGameBoard.getShipData();
   colorSquares(shipRecord);
@@ -33,28 +35,49 @@ const setupUserHits = (playerObj) => {
         if (computerBaord.checkIfLost()) {
           showEndGame(playerObj.playerName);
         }
-      } else {
+      } else if (!attackResult) {
+        if (
+          computerBaord.getShip(hitId[0], hitId[1]) == null &&
+          !square.classList.contains("miss") &&
+          !square.classList.contains("hit")
+        ) {
+          addMissDom(square);
+          computerAttack(playerObj);
+        }
         if (computerBaord.checkIfLost()) {
           showEndGame(playerObj.playerName);
-        }
-        addMissDom(square);
-        const computerResponse = computerHits(playerObj); //{cordinate :[x, y], wasItHit:true/false}
-        if (computerResponse.wasItHit) {
-          addCompHit(computerResponse.coordinate);
-        } else {
-          addCompMiss(computerResponse.coordinate);
         }
       }
     });
   });
 };
 
+const computerAttack = (playerObj) => {
+  const computerResponse = computerHits(playerObj); //{cordinate :[x, y], wasItHit:true/false}
+  if (computerResponse.wasItHit) {
+    addCompHit(computerResponse.coordinate);
+  } else {
+    addCompMiss(computerResponse.coordinate);
+  }
+};
+
 const addHitDom = (square) => {
   square.classList.add("hit");
+  if (audioChoice) {
+    audio.hit.currentTime = 0;
+
+    audio.hit.volume = 1;
+    audio.hit.play();
+  }
 };
 
 const addMissDom = (square) => {
   square.classList.add("miss");
+  if (audioChoice) {
+    audio.miss.currentTime = 0;
+    audio.miss.volume = 1;
+    audio.miss.play();
+  }
 };
 
 const addCompHit = (cordinate) => {
