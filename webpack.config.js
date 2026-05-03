@@ -3,6 +3,7 @@ import path from "node:path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
+  target: "web",
   mode: "development",
   entry: "./src/index.js",
   output: {

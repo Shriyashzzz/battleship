@@ -64,6 +64,7 @@ const initalizeBtnListeners = (playerObj) => {
           ) {
             let targetId = `[${x},${squareId[1]}]`;
             let pointerSquare = document.getElementById(targetId);
+
             if (pointerSquare != null) {
               pointerSquare.classList.add("hoverEnter");
             }
@@ -78,6 +79,35 @@ const initalizeBtnListeners = (playerObj) => {
             let pointerSquare = document.getElementById(targetId);
             if (pointerSquare != null) {
               pointerSquare.classList.add("hoverEnter");
+            }
+          }
+        }
+      } else if (
+        currentShip &&
+        checkIfCollide(squareId, currentShip, playerObj)
+      ) {
+        if (currentShip.getShipOrientation() == "x") {
+          for (
+            let x = squareId[0];
+            x < squareId[0] + currentShip.getLength();
+            x++
+          ) {
+            let targetId = `[${x},${squareId[1]}]`;
+            let pointerSquare = document.getElementById(targetId);
+            if (pointerSquare != null) {
+              pointerSquare.classList.add("hoverOof");
+            }
+          }
+        } else if (currentShip.getShipOrientation() == "y") {
+          for (
+            let y = squareId[1];
+            y < squareId[1] + currentShip.getLength();
+            y++
+          ) {
+            let targetId = `[${squareId[0]},${y}]`;
+            let pointerSquare = document.getElementById(targetId);
+            if (pointerSquare != null) {
+              pointerSquare.classList.add("hoverOof");
             }
           }
         }
@@ -111,6 +141,35 @@ const initalizeBtnListeners = (playerObj) => {
             }
           }
         }
+      } else if (
+        currentShip &&
+        checkIfCollide(squareId, currentShip, playerObj)
+      ) {
+        if (currentShip.getShipOrientation() == "x") {
+          for (
+            let x = squareId[0];
+            x < squareId[0] + currentShip.getLength();
+            x++
+          ) {
+            let targetId = `[${x},${squareId[1]}]`;
+            let pointerSquare = document.getElementById(targetId);
+            if (pointerSquare != null) {
+              pointerSquare.classList.remove("hoverOof");
+            }
+          }
+        } else if (currentShip.getShipOrientation() == "y") {
+          for (
+            let y = squareId[1];
+            y < squareId[1] + currentShip.getLength();
+            y++
+          ) {
+            let targetId = `[${squareId[0]},${y}]`;
+            let pointerSquare = document.getElementById(targetId);
+            if (pointerSquare != null) {
+              pointerSquare.classList.remove("hoverOof");
+            }
+          }
+        }
       }
     });
 
@@ -124,7 +183,7 @@ const initalizeBtnListeners = (playerObj) => {
           );
 
           currentButton.disabled = true;
-          currentButton.style.opacity = "0.2"; // Fixed style syntax
+          currentButton.style.opacity = "0.2";
           currentButton.style.border = "none";
 
           placeShip(squareId, currentShip);
@@ -133,7 +192,7 @@ const initalizeBtnListeners = (playerObj) => {
           shipAddedCount += 1;
           if (shipAddedCount >= 5) {
             toggleAxisBtn.disabled = true;
-            toggleAxisBtn.style.opacity = "0.2"; // Fixed style syntax
+            toggleAxisBtn.style.opacity = "0.2";
             toggleAxisBtn.style.border = "none";
           }
         }
@@ -148,7 +207,7 @@ const placeShip = (squareId, currentShip) => {
       let targetId = `[${x},${squareId[1]}]`;
       let currentSquare = document.getElementById(targetId);
       if (currentSquare != null) {
-        currentSquare.style.backgroundColor = "green";
+        currentSquare.classList.add("placeShip");
       }
     }
   } else if (currentShip.getShipOrientation() == "y") {
@@ -156,7 +215,7 @@ const placeShip = (squareId, currentShip) => {
       let targetId = `[${squareId[0]},${y}]`;
       let currentSquare = document.getElementById(targetId);
       if (currentSquare != null) {
-        currentSquare.style.backgroundColor = "green";
+        currentSquare.classList.add("placeShip");
       }
     }
   }

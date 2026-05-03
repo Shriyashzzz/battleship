@@ -211,7 +211,7 @@ input[type="text"] {
 }
 
 .gameInfo .whatPara {
-  font-family: "Nosifer", monospace, sans-serif;
+  font-family: "Nosifer", monospacbattlePageContente, sans-serif;
   color: rgb(235, 112, 235);
   font-weight: bolder;
 }
@@ -374,6 +374,14 @@ input[type="text"] {
 
 .hoverEnter {
   background-color: yellow;
+}
+
+.hoverOof {
+  background-color: rgb(222, 129, 129);
+}
+
+.placeShip {
+  background-color: green;
 }
 
 /* ========================================
