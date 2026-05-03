@@ -1,6 +1,6 @@
 import { startBtnEventListener } from "./homePageEventListener.js";
 
-const initializeHomePageElements = () => {
+export const initializeHomePageElements = () => {
   const main = document.querySelector("main");
   main.classList.add("homePageMain");
   const container = document.createElement("div");

@@ -1,9 +1,9 @@
 import { makeGameBoardDOM } from "../shipPlaceDom/initializeGamePage.js";
-import { renderUserShips } from "./renderUserShips.js";
+import { startGame } from "./renderUserShips.js";
 export const createBattlePage = (playerObj) => {
   let shipInfo = playerObj.playerGameBoard.battleSpace;
   cleanPage(playerObj);
-  renderUserShips(playerObj);
+  startGame(playerObj);
 };
 
 function cleanPage(playerObj) {
@@ -16,10 +16,10 @@ function cleanPage(playerObj) {
   const battlePageContent = document.querySelector(".battlePageContent");
   const gridWrapper = document.createElement("div");
   gridWrapper.classList.add("gridWrapper");
-  makeGameBoardDOM(gridWrapper, "computerBoard", "userSquare");
-  makeGameBoardDOM(gridWrapper, "userBoard", "computerSquare");
+  makeGameBoardDOM(gridWrapper, "userBoard", "userSquare");
+  makeGameBoardDOM(gridWrapper, "computerBoard", "computerSquare");
   const userBoard = document.querySelector(".userBoard");
-  battlePageContent.append(gameName, gridWrapper);
+
   const squares = document.querySelectorAll(".square");
   squares.forEach((square) => {
     square.classList.remove("square");
@@ -34,5 +34,5 @@ function cleanPage(playerObj) {
   vsPara.textContent = "VS";
   computerName.textContent = "Not so Advanced AI";
   playerNamesWrapper.append(userName, vsPara, computerName);
-  battlePageContent.append(playerNamesWrapper);
+  battlePageContent.append(gameName, playerNamesWrapper, gridWrapper);
 }

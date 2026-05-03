@@ -1,3 +1,6 @@
+import { computerPlayer } from "../computerObject.js";
+import { showEndGame } from "./endGame.js";
+
 let wasItHit = false;
 let hitCoordinates = []; // Track the current ship being hunted
 const usedCoordinates = new Set();
@@ -57,7 +60,7 @@ export function computerHits(playerObj) {
     hitCoordinates.push({ x, y });
     if (playerGameBoard.checkIfLost()) {
       // if lost shoq comp won screen
-      console.log("comp won");
+      showEndGame(computerPlayer.playerName, playerObj);
     }
   }
   return { coordinate: [x, y], wasItHit: wasItHit };
