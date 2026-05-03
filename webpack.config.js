@@ -3,7 +3,6 @@ import path from "node:path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
-  target: "web",
   mode: "development",
   entry: "./src/index.js",
   output: {
@@ -32,6 +31,10 @@ export default {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+      {
+        test: /\.(mp3|wav|ogg)$/i,
         type: "asset/resource",
       },
     ],

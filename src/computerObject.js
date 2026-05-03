@@ -1,7 +1,7 @@
 import { Player } from "./Class/Player.js";
 import { Ship } from "./Class/Ship.js";
 /// RANDOM ship cordinate generator
-export const computerPlayer = new Player("ComputerPlayer");
+export const computerPlayer = new Player("AI");
 const shipConfigs = [];
 const shipCordinates = new Set([]);
 //randomize computer's ships position

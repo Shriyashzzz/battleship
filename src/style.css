@@ -59,6 +59,25 @@ main {
     opacity: 1;
   }
 }
+.audioBtn {
+  height: fit-content;
+  width: fit-content;
+  margin-top: -2rem;
+  background-color: inherit;
+  border: none;
+  .playImg,
+  .muteImg {
+    filter: invert(5%) sepia(2%) saturate(1396%) hue-rotate(202deg)
+      brightness(94%) contrast(94%);
+  }
+}
+
+.icons {
+  filter: invert(99%) sepia(1%) saturate(2975%) hue-rotate(190deg)
+    brightness(94%) contrast(108%);
+  height: 2rem;
+  width: 2rem;
+}
 
 /* ========================================
    FOOTER
@@ -124,6 +143,7 @@ main {
   flex: 1;
   gap: 3rem;
   flex-direction: column;
+  align-items: center;
 }
 
 .homePageMain .homePageContent p {
@@ -318,7 +338,7 @@ input[type="text"] {
 
 /* All squares */
 .square {
-  border: 1px solid rgb(170, 165, 165);
+  border: 1px solid rgb(255, 179, 0);
   height: 100%;
   width: 100%;
   cursor: pointer;
@@ -338,7 +358,7 @@ input[type="text"] {
 
 /* Computer square specific styles */
 .computerSquare {
-  border: 2px solid rgb(176, 241, 10);
+  border: 1px solid rgb(176, 241, 10);
   cursor:
     url("./icons/ippoDefend.png") 12 12,
     auto;
@@ -452,6 +472,7 @@ input[type="text"] {
   font-family: "Nosifer";
   font-size: 1.5rem;
   color: rgb(200, 255, 0);
+  -webkit-text-stroke: 1px black;
   margin: 0.5rem;
 }
 
@@ -498,6 +519,7 @@ input[type="text"] {
     margin-top: 5rem;
     text-align: center;
     font-size: 1.5rem;
+    -webkit-text-stroke: 1px black;
     color: #ff0202;
   }
 }
