@@ -1,10 +1,58 @@
 import { startBtnEventListener } from "./homePageEventListener.js";
+<<<<<<< HEAD
 
+=======
+import soundOn from "../icons/soundOn.svg";
+import soundOff from "../icons/soundOff.svg";
+import { audio } from "../audio/audioObject.js";
+
+export let audioChoice = false;
+>>>>>>> 29c59474cc2b4bf41d5ff2efc637db5990a365ae
 const initializeHomePageElements = () => {
   const main = document.querySelector("main");
   main.classList.add("homePageMain");
   const container = document.createElement("div");
   container.classList.add("homePageContent");
+<<<<<<< HEAD
+=======
+  const playAudioBtn = document.createElement("button");
+  playAudioBtn.classList.add("audioBtn");
+  const playImg = document.createElement("img");
+  playImg.classList.add("playImg", "icons");
+  const muteImg = document.createElement("img");
+  muteImg.classList.add("muteImg", "icons");
+  muteImg.style.display = "block";
+  playImg.style.display = "none";
+  playImg.src = soundOn;
+  muteImg.src = soundOff;
+  playAudioBtn.append(playImg, muteImg);
+  playAudioBtn.addEventListener("click", () => {
+    if (audio.bgAudio.paused) {
+      audioChoice = true;
+      audio.bgAudio.play();
+      audio.bgAudio.loop = true;
+      audio.bgAudio.volume = 0.5;
+      playImg.style.display = "block";
+
+      playImg.classList.add("animate");
+      setTimeout(() => {
+        playImg.classList.remove("animate");
+      }, 600);
+      muteImg.style.display = "none";
+      audio.bgAudio.loop = true; // Keep the battle music going!
+    } else {
+      audioChoice = false;
+      audio.bgAudio.pause();
+      muteImg.classList.add("animate");
+      setTimeout(() => {
+        muteImg.classList.remove("animate");
+      }, 600);
+      muteImg.style.display = "block";
+      playImg.style.display = "none";
+    }
+    playAudioBtn.classList.remove("animate");
+  });
+>>>>>>> 29c59474cc2b4bf41d5ff2efc637db5990a365ae
   const gameName = document.createElement("p");
   gameName.textContent = "BATTLESHIP";
   const userName = document.createElement("input");
@@ -33,6 +81,9 @@ const initializeHomePageElements = () => {
   gameInfo.append(whatPara, gameInfoLink);
 
   main.append(container, gameInfo);
+  // audio toggle
+  const body = document.querySelector("body");
+  body.appendChild(playAudioBtn);
 };
 
 (() => {

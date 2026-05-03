@@ -2,7 +2,11 @@ import { forEach } from "lodash";
 import { computerPlayer } from "../computerObject.js";
 import { computerHits } from "./computerHits.js";
 import { showEndGame } from "./endGame.js";
+<<<<<<< HEAD
 import { audioChoice } from "../index.js";
+=======
+import { audioChoice } from "../homepageDom/homepage.js";
+>>>>>>> 29c59474cc2b4bf41d5ff2efc637db5990a365ae
 import { audio } from "../audio/audioObject.js";
 export function startGame(playerObj) {
   const shipRecord = playerObj.playerGameBoard.getShipData();
@@ -75,6 +79,10 @@ const addMissDom = (square) => {
   square.classList.add("miss");
   if (audioChoice) {
     audio.miss.currentTime = 0;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 29c59474cc2b4bf41d5ff2efc637db5990a365ae
     audio.miss.volume = 1;
     audio.miss.play();
   }
