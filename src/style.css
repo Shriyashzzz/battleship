@@ -34,6 +34,7 @@
 body {
   margin: 0;
   padding: 0;
+  position: relative;
   height: 100dvh;
   font-size: large;
   background-color: var(--defaultBackground);
@@ -61,15 +62,30 @@ main {
 }
 .audioBtn {
   height: fit-content;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  margin-top: 4rem;
+  margin-right: 3rem;
   width: fit-content;
-  margin-top: -2rem;
-  background-color: inherit;
+  background-color: transparent;
   border: none;
   .playImg,
   .muteImg {
-    filter: invert(5%) sepia(2%) saturate(1396%) hue-rotate(202deg)
-      brightness(94%) contrast(94%);
+    filter: invert(76%) sepia(41%) saturate(650%) hue-rotate(17deg)
+      brightness(94%) contrast(83%);
+    cursor: pointer;
+    transition: transform 0.5s ease;
   }
+
+  .playImg:active,
+  .muteImg:active {
+    background-color: #d3d1d1;
+  }
+}
+.animate {
+  animation: shake 0.5s;
 }
 
 .icons {
@@ -266,6 +282,7 @@ input[type="text"] {
 }
 
 .gameBtnContainer {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -707,5 +724,19 @@ input[type="text"] {
 
   .battlePageContent p {
     font-size: 1rem;
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
   }
 }

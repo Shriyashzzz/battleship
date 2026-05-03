@@ -1,7 +1,8 @@
 import { Player } from "../Class/Player.js";
 import { getPlayerShips } from "./setupPlayerShips.js";
-
+import { audio } from "../audio/audioObject.js";
 export const initializeGamePageDom = (playerName) => {
+  audio.bgAudio.volume = 0.2;
   const playerObj = new Player(playerName);
   const gamePageContent = document.querySelector(".gameSelectContent");
   makeButtons(gamePageContent);

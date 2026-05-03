@@ -1,5 +1,7 @@
+import { audioChoice } from "../homepageDom/homepage.js";
 import { makeGameBoardDOM } from "../shipPlaceDom/initializeGamePage.js";
 import { startGame } from "./renderUserShips.js";
+
 export const createBattlePage = (playerObj) => {
   let shipInfo = playerObj.playerGameBoard.battleSpace;
   cleanPage(playerObj);
