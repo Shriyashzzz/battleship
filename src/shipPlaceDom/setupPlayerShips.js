@@ -148,7 +148,7 @@ const placeShip = (squareId, currentShip) => {
       let targetId = `[${x},${squareId[1]}]`;
       let currentSquare = document.getElementById(targetId);
       if (currentSquare != null) {
-        currentSquare.style.backgroundColor = "red";
+        currentSquare.style.backgroundColor = "green";
       }
     }
   } else if (currentShip.getShipOrientation() == "y") {
@@ -156,7 +156,7 @@ const placeShip = (squareId, currentShip) => {
       let targetId = `[${squareId[0]},${y}]`;
       let currentSquare = document.getElementById(targetId);
       if (currentSquare != null) {
-        currentSquare.style.backgroundColor = "red";
+        currentSquare.style.backgroundColor = "green";
       }
     }
   }

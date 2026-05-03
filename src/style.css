@@ -196,32 +196,6 @@ main {
   border: 2px solid red;
 }
 
-@media screen and (max-width: 768px) {
-  .homePageMain {
-    .homePageContent {
-      p {
-        font-size: 2rem;
-      }
-    }
-
-    .gameInfo {
-      display: flex;
-      font-size: 0.9rem;
-      align-items: center;
-      justify-content: center;
-
-      .whatPara {
-        font-family: "Nosifer", monospace, sans-serif;
-        color: rgb(235, 112, 235);
-      }
-      .gameInfoLink {
-        font-family: "Orbitron", monospace, sans-serif;
-
-        color: #4a90e2;
-      }
-    }
-  }
-}
 /* game select page style */
 
 .gameSelectContent {
@@ -263,16 +237,37 @@ main {
   .square {
     box-sizing: border-box;
     border: 1px solid black;
-
     height: 42px;
+    cursor: pointer;
     width: 42px;
   }
 
   .square:active {
-    background-color: aquamarine;
+    background-color: rgb(19, 178, 221);
   }
 }
+.userSquare,
+.computerSquare {
+  cursor:
+    url("./icons/ippoDefend.png") 12 12,
+    auto;
+  box-sizing: border-box;
+  border: 1px solid black;
+  height: 42px;
+  width: 42px;
+}
 
+.computerSquare:active {
+  background-color: #dd6666;
+  cursor:
+    url("./icons/ippoPunch.png") 12 12,
+    auto;
+}
+
+.userSquare {
+  cursor: auto;
+  opacity: 0.3;
+}
 .shipBtn {
   cursor: pointer;
 
@@ -312,4 +307,59 @@ main {
   animation: fadeInAnimation ease 2s;
   animation-iteration-count: 1;
   animation-fill-mode: backwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font-size: 2rem;
+    color: #dc211084;
+  }
+}
+
+.gridWrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .homePageMain {
+    .homePageContent {
+      p {
+        font-size: 2rem;
+      }
+    }
+
+    .gameInfo {
+      display: flex;
+      font-size: 0.9rem;
+      align-items: center;
+      justify-content: center;
+
+      .whatPara {
+        font-family: "Nosifer", monospace, sans-serif;
+        color: rgb(235, 112, 235);
+      }
+      .gameInfoLink {
+        font-family: "Orbitron", monospace, sans-serif;
+
+        color: #4a90e2;
+      }
+    }
+  }
+}
+
+.playerNamesWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  p {
+    padding-left: 2rem;
+    font-family: "Nosifer";
+    font-size: 1.5rem;
+    color: green;
+  }
 }

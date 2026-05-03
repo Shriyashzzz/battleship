@@ -34,12 +34,15 @@ export class GameBoard {
     let ship = this.getShip(x, y);
     if (ship != null) {
       ship.hit();
+      this.#addHitRecord(x, y);
+      return true;
     }
-    this.#addHitRecord(x, y);
+    return false;
   }
   // hitStatus // 0=> missed // 1=> hit
   #addHitRecord(x, y) {
     this.hitRecords[x][y] = 1;
+    console.log(`hit added at ${x}${y}`);
   }
 
   checkIfLost() {
@@ -49,5 +52,9 @@ export class GameBoard {
       return true;
     }
     return false;
+  }
+
+  getShipData() {
+    return this.battleSpace;
   }
 }

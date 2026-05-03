@@ -9,13 +9,19 @@ export const initializeGamePageDom = (playerName) => {
   getPlayerShips(playerObj);
 };
 
-export function makeGameBoardDOM(gamePageContent) {
+export function makeGameBoardDOM(gamePageContent, boardOwner, squareOwner) {
   const shipPlaceBoard = document.createElement("div");
+  if (boardOwner) {
+    shipPlaceBoard.classList.add(boardOwner);
+  }
   shipPlaceBoard.classList.add("shipPlaceBoard");
   for (let col = 0; col < 10; col++) {
     for (let row = 0; row < 10; row++) {
       const square = document.createElement("div");
       square.id = `[${row},${col}]`;
+      if (squareOwner) {
+        square.classList.add(squareOwner);
+      }
       square.classList.add("square");
       shipPlaceBoard.append(square);
     }
