@@ -282,7 +282,7 @@ input[type="text"] {
   animation-fill-mode: backwards;
   p {
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     padding: 1rem;
     -webkit-text-stroke: 1px #e90c0c;
   }
@@ -445,7 +445,6 @@ input[type="text"] {
 .battlePageContent {
   min-height: 100dvh;
   height: auto;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -456,7 +455,7 @@ input[type="text"] {
   background-size: cover;
   animation: fadeInAnimation ease 2s;
   animation-iteration-count: 1;
-  animation-fill-mode: backwards;
+  animation-fill-mode: forwards;
 }
 
 .battlePageContent::before {
@@ -469,12 +468,16 @@ input[type="text"] {
   height: 100%;
   opacity: 0.5;
   z-index: -1;
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .battlePageContent p {
   font-size: 1.5rem;
-  color: rgb(205, 193, 193);
-  -webkit-text-stroke: 1px #ff0000;
+  color: rgb(88, 98, 88);
+
+  -webkit-text-stroke: 1px #0b0a0a;
 }
 
 /* Container for both game boards */
@@ -507,8 +510,8 @@ input[type="text"] {
 .playerNamesWrapper p {
   font-family: "Nosifer";
   font-size: 1.5rem;
-  color: rgb(190, 1, 1);
-  -webkit-text-stroke: 1px rgb(255, 255, 255);
+  color: rgb(244, 244, 244);
+  -webkit-text-stroke: 1px rgb(255, 0, 0);
   margin: 0.5rem;
 }
 
@@ -551,10 +554,6 @@ input[type="text"] {
    ======================================== */
 
 .battlePageContent {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
   section {
     display: flex;
     flex-direction: column;
@@ -741,6 +740,28 @@ input[type="text"] {
   .shipBtn {
     padding: 6px 10px;
     font-size: 0.75rem;
+    .shipBtn:focus {
+      border: 2px solid #da9090;
+      font-weight: bolder;
+      background-color: #46678d;
+      color: rgb(238, 237, 240);
+    }
+
+    .shipBtn:active {
+      transform: translateY(0.3rem);
+    }
+
+    .shipBtn span {
+      font-size: 1em;
+      letter-spacing: 1px;
+    }
+
+    .shipSubmit:focus {
+      border: none;
+      background-color: #dddddd;
+      color: black;
+      border: 2px solid #da9090;
+    }
   }
 
   .playerNamesWrapper p {
@@ -782,6 +803,28 @@ input[type="text"] {
   .shipBtn {
     padding: 6px 10px;
     font-size: 0.75rem;
+    .shipBtn:focus {
+      border: 2px solid #da9090;
+      font-weight: bolder;
+      background-color: #46678d;
+      color: rgb(238, 237, 240);
+    }
+
+    .shipBtn:active {
+      transform: translateY(0.3rem);
+    }
+
+    .shipBtn span {
+      font-size: 1em;
+      letter-spacing: 1px;
+    }
+
+    .shipSubmit:focus {
+      border: none;
+      background-color: #dddddd;
+      color: black;
+      border: 2px solid #da9090;
+    }
   }
 
   .playerNamesWrapper p {

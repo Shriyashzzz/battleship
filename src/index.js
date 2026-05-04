@@ -55,4 +55,5 @@ window.onload = function () {
     }
   });
   body.appendChild(playAudioBtn);
+  playAudioBtn.classList.add("animate");
 })();

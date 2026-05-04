@@ -8,11 +8,9 @@ const initalizeBtnListeners = (playerObj) => {
   let shipAddedCount = 0;
   let currentButton;
   const submitBtn = document.querySelector(".shipSubmit");
-
+  submitBtn.disabled = true;
   submitBtn.addEventListener("click", () => {
-    if (shipAddedCount == 5) {
-      createBattlePage(playerObj);
-    }
+    createBattlePage(playerObj);
   });
 
   toggleAxisBtn.addEventListener("click", () => {
@@ -190,6 +188,7 @@ const initalizeBtnListeners = (playerObj) => {
 
           shipAddedCount += 1;
           if (shipAddedCount >= 5) {
+            submitBtn.disabled = false;
             toggleAxisBtn.disabled = true;
             toggleAxisBtn.style.opacity = "0.2";
             toggleAxisBtn.style.border = "none";
