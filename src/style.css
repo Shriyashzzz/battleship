@@ -382,7 +382,7 @@ input[type="text"] {
 /* User square specific styles */
 .computerSquare {
   cursor: auto;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .computerSquare.square:hover,
@@ -620,6 +620,7 @@ input[type="text"] {
   }
   .computerBoard {
     border: 1px solid rgb(150, 13, 200);
+    opacity: 0.5;
   }
   .gridWrapper {
     gap: 1rem;
