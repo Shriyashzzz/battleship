@@ -66,15 +66,15 @@ main {
   top: 0;
   right: 0;
   z-index: 9999;
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-right: 1rem;
   width: fit-content;
   background-color: transparent;
   border: none;
   .playImg,
   .muteImg {
-    filter: invert(76%) sepia(41%) saturate(650%) hue-rotate(17deg)
-      brightness(94%) contrast(83%);
+    filter: invert(76%) sepia(100%) saturate(650%) hue-rotate(17deg)
+      brightness(94%) contrast(60%);
     cursor: pointer;
     transition: transform 0.5s ease;
   }
@@ -220,7 +220,8 @@ input[type="text"] {
   font-family: "Nosifer";
   font-size: 1rem;
   background: none;
-  border: none;
+  border: 1px solid black;
+
   align-self: center;
   border-radius: 1rem;
   padding: 6px;
@@ -272,13 +273,19 @@ input[type="text"] {
   justify-content: center;
   align-items: center;
   height: 100dvh;
-  gap: 1rem;
   background-image: url("./icons/battleShip.jpg");
   background-size: cover;
-  background-position: center;
+  background-repeat: no-repeat;
+
   animation: fadeInAnimation ease 2s;
   animation-iteration-count: 1;
   animation-fill-mode: backwards;
+  p {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding: 1rem;
+    -webkit-text-stroke: 1px #e90c0c;
+  }
 }
 
 .gameBtnContainer {
@@ -316,6 +323,9 @@ input[type="text"] {
 
 .shipBtn:focus {
   border: 4px solid #da9090;
+  font-weight: bolder;
+  background-color: #46678d;
+  color: rgb(238, 237, 240);
 }
 
 .shipBtn:active {
@@ -325,6 +335,13 @@ input[type="text"] {
 .shipBtn span {
   font-size: 1.2em;
   letter-spacing: 1px;
+}
+
+.shipSubmit:focus {
+  border: none;
+  background-color: #dddddd;
+  color: black;
+  border: 4px solid #da9090;
 }
 
 /* ========================================
@@ -355,7 +372,7 @@ input[type="text"] {
 
 /* All squares */
 .square {
-  border: 1px solid rgb(255, 179, 0);
+  border: 2px solid rgb(255, 179, 0);
   height: 100%;
   width: 100%;
   cursor: pointer;
@@ -375,7 +392,7 @@ input[type="text"] {
 
 /* Computer square specific styles */
 .userSquare {
-  border: 1px solid rgb(176, 241, 10);
+  border: 2px solid rgba(241, 210, 10, 0.949);
   cursor:
     url("./icons/ippoDefend.png") 12 12,
     auto;
@@ -435,6 +452,7 @@ input[type="text"] {
   position: relative;
   background-image: url(./icons/battleShip.jpg);
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
   animation: fadeInAnimation ease 2s;
   animation-iteration-count: 1;
@@ -455,7 +473,8 @@ input[type="text"] {
 
 .battlePageContent p {
   font-size: 1.5rem;
-  color: red;
+  color: rgb(205, 193, 193);
+  -webkit-text-stroke: 1px #ff0000;
 }
 
 /* Container for both game boards */
@@ -488,8 +507,8 @@ input[type="text"] {
 .playerNamesWrapper p {
   font-family: "Nosifer";
   font-size: 1.5rem;
-  color: rgb(200, 255, 0);
-  -webkit-text-stroke: 1px black;
+  color: rgb(190, 1, 1);
+  -webkit-text-stroke: 1px rgb(255, 255, 255);
   margin: 0.5rem;
 }
 
@@ -634,7 +653,7 @@ input[type="text"] {
    RESPONSIVE DESIGN - MOBILE (600px)
    ======================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   body {
     font-size: medium;
   }
@@ -715,6 +734,25 @@ input[type="text"] {
   .winnerPara {
     font-size: 1.5rem;
   }
+  .audioBtn {
+    margin-top: 1rem;
+    margin-right: 0.2rem;
+  }
+  .shipBtn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .playerNamesWrapper p {
+    font-size: 0.85rem;
+  }
+
+  .battlePageContent p {
+    font-size: 1rem;
+  }
+  .userSquare {
+    border: 1.5px solid rgba(241, 210, 10, 0.949);
+  }
 }
 
 /* ========================================
@@ -752,6 +790,13 @@ input[type="text"] {
 
   .battlePageContent p {
     font-size: 1rem;
+  }
+  .userSquare {
+    border: 1.5px solid rgb(255, 217, 1);
+  }
+  .audioBtn {
+    margin-top: 1rem;
+    margin-right: 0.2rem;
   }
 }
 @keyframes shake {

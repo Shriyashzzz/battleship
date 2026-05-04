@@ -8,6 +8,9 @@ export const initializeGamePageDom = (playerName) => {
   makeButtons(gamePageContent);
   makeGameBoardDOM(gamePageContent);
   getPlayerShips(playerObj);
+  const chooseShipPara = document.createElement("p");
+  chooseShipPara.textContent = "Position your vessels for combat";
+  gamePageContent.append(chooseShipPara);
 };
 
 export function makeGameBoardDOM(gamePageContent, boardOwner, squareOwner) {
@@ -69,5 +72,6 @@ function makeButtons(gamePageContent) {
   submitBtn.classList.add("shipSubmit", "shipBtn");
   submitWrapper.append(axisBtn, submitBtn);
   gameBtnContainer.append(buttonContainer, submitWrapper);
+
   gamePageContent.append(gameBtnContainer);
 }
