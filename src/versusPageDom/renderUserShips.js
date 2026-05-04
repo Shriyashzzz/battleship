@@ -15,7 +15,7 @@ const colorSquares = (shipRecord) => {
     row.forEach((value, y) => {
       if (value != null) {
         const userSquare = document.querySelector(
-          `[id="[${x},${y}]"],[class="userSquare"]`,
+          `[id="[${x},${y}]"][class~="computerSquare"]`,
         );
         userSquare.style.backgroundColor = "green";
       }
@@ -25,12 +25,16 @@ const colorSquares = (shipRecord) => {
 
 const setupUserHits = (playerObj) => {
   const computerBaord = computerPlayer.playerGameBoard;
-  const computerSquares = document.querySelectorAll(".computerSquare");
-  computerSquares.forEach((square) => {
+  const userSquares = document.querySelectorAll(".userSquare");
+  userSquares.forEach((square) => {
     square.addEventListener("click", () => {
       const hitId = JSON.parse(square.id);
       const attackResult = computerBaord.receiveAttack(hitId[0], hitId[1]);
-      if (attackResult) {
+      if (
+        attackResult &&
+        !square.classList.contains("miss") &&
+        !square.classList.contains("hit")
+      ) {
         addHitDom(square);
         if (computerBaord.checkIfLost()) {
           showEndGame(playerObj.playerName);
@@ -82,14 +86,14 @@ const addMissDom = (square) => {
 
 const addCompHit = (cordinate) => {
   const playerSquare = document.querySelector(
-    `[id = "[${cordinate[0]},${cordinate[1]}]"],[class = "userSquare"]`,
+    `[id = "[${cordinate[0]},${cordinate[1]}]"][class ~= "computerSquare"]`,
   );
   playerSquare.classList.add("hit");
 };
 
 const addCompMiss = (cordinate) => {
   const playerSquare = document.querySelector(
-    `[id = "[${cordinate[0]},${cordinate[1]}]"],[class = "userSquare"]`,
+    `[id = "[${cordinate[0]},${cordinate[1]}]"][class ~= "computerSquare"]`,
   );
   playerSquare.classList.add("miss");
 };

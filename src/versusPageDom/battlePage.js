@@ -18,8 +18,10 @@ function cleanPage(playerObj) {
   const battlePageContent = document.querySelector(".battlePageContent");
   const gridWrapper = document.createElement("div");
   gridWrapper.classList.add("gridWrapper");
+
   makeGameBoardDOM(gridWrapper, "userBoard", "userSquare");
   makeGameBoardDOM(gridWrapper, "computerBoard", "computerSquare");
+
   const userBoard = document.querySelector(".userBoard");
 
   const squares = document.querySelectorAll(".square");

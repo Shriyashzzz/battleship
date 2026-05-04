@@ -66,8 +66,8 @@ main {
   top: 0;
   right: 0;
   z-index: 9999;
-  margin-top: 4rem;
-  margin-right: 3rem;
+  margin-top: 2rem;
+  margin-right: 1rem;
   width: fit-content;
   background-color: transparent;
   border: none;
@@ -363,25 +363,25 @@ input[type="text"] {
 }
 
 /* User square specific styles */
-.userSquare {
+.computerSquare {
   cursor: auto;
   opacity: 0.7;
 }
 
-.userSquare.square:hover,
-.userSquare:focus {
+.computerSquare.square:hover,
+.computerSquare:focus {
   background-color: transparent;
 }
 
 /* Computer square specific styles */
-.computerSquare {
+.userSquare {
   border: 1px solid rgb(176, 241, 10);
   cursor:
     url("./icons/ippoDefend.png") 12 12,
     auto;
 }
 
-.computerSquare:active {
+.userSquare:active {
   background-color: #dd6666;
   cursor:
     url("./icons/ippoPunch.png") 12 12,
